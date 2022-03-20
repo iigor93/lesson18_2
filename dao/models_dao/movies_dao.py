@@ -9,6 +9,11 @@ class MoviesDAO:
         all_item = self.session.query(ModelClass).all()
         return all_item
 
+    def get_all_filter(self, field, data):
+        kwargs = {field: data}
+        all_item = ModelClass.query.filter_by(**kwargs).all()
+        return all_item
+
     def get_one(self, iid):
         one_item = ModelClass.query.get(iid)
         return one_item

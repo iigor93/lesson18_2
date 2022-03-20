@@ -10,7 +10,11 @@ movies_ns = Namespace('movies')
 @movies_ns.route('/')
 class Items_all(Resource):
     def get(self):
-        all_items = service_obj.get_all()
+        filter_ = request.values
+        if filter_:
+            all_items = service_obj.get_all_filter(filter_)
+        else:
+            all_items = service_obj.get_all()
         all_item_schema = ModelSchema(many=True)
         return jsonify(all_item_schema.dump(all_items))
 

@@ -6,6 +6,12 @@ class MovieService:
         all_items = self.dao_model.get_all()
         return all_items
 
+    def get_all_filter(self, req):
+        field = list(req.keys())[0]
+        data = req.get(field)
+        all_items = self.dao_model.get_all_filter(field, data)
+        return all_items
+
     def get_one(self, iid):
         one_item = self.dao_model.get_one(iid)
         return one_item
