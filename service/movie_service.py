@@ -7,9 +7,7 @@ class MovieService:
         return all_items
 
     def get_all_filter(self, req):
-        field = list(req.keys())[0]
-        data = req.get(field)
-        all_items = self.dao_model.get_all_filter(field, data)
+        all_items = self.dao_model.get_all_filter(req)
         return all_items
 
     def get_one(self, iid):
